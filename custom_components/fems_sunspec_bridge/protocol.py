@@ -79,7 +79,6 @@ class ModbusServer:
     async def close(self) -> None:
         if self.server is not None:
             self.server.close()
-            await self.server.wait_closed()
         for writer in list(self.clients):
             writer.close()
         tasks = list(self.tasks)
@@ -87,6 +86,9 @@ class ModbusServer:
             task.cancel()
         if tasks:
             await asyncio.gather(*tasks, return_exceptions=True)
+        # Python 3.14 waits for accepted clients too: close them before waiting.
+        if self.server is not None:
+            await self.server.wait_closed()
 
     async def handle_client(
         self, reader: asyncio.StreamReader, writer: asyncio.StreamWriter

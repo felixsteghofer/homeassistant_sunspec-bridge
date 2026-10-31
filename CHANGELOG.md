@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.2
+
+- Close accepted Modbus clients before awaiting server shutdown, preventing
+  integration unload/restart from hanging with an open FEMS connection.
+- Add a regression test using an idle connected Modbus client.
+
 ## 0.2.1
 
 - Avoid removing Home Assistant's consumed one-shot shutdown listener a second time.

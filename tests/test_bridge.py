@@ -92,6 +92,20 @@ class ProtocolTests(unittest.IsolatedAsyncioTestCase):
             writer.close()
             await writer.wait_closed()
 
+    async def test_unload_closes_an_idle_connected_client_without_hanging(self):
+        await self.server.start("127.0.0.1", 0)
+        reader, writer = await asyncio.open_connection(
+            "127.0.0.1", self.server.server.sockets[0].getsockname()[1]
+        )
+        try:
+            await asyncio.sleep(0)
+            async with asyncio.timeout(1):
+                await self.server.close()
+            self.assertEqual(await reader.read(), b"")
+        finally:
+            writer.close()
+            await writer.wait_closed()
+
     async def test_acl_rejects_unlisted_client(self):
         self.server.networks = [ipaddress.ip_network("192.0.2.0/24")]
         await self.server.start("127.0.0.1", 0)
