@@ -119,6 +119,8 @@ class SunSpecBridge:
         )
 
     async def stop(self, event):
+        # async_listen_once removes itself before invoking this callback.
+        self.stop_unsubscribe = None
         await self.close()
 
     async def close(self):

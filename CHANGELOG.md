@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.1
+
+- Avoid removing Home Assistant's consumed one-shot shutdown listener a second time.
+- Add a regression test for shutdown-event cleanup.
+
 ## 0.2.0
 
 - Publish the existing bridge as a standalone, HACS-managed Home Assistant integration.

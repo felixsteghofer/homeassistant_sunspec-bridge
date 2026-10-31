@@ -177,6 +177,13 @@ class ConfigurationTests(unittest.TestCase):
 
 
 class LifecycleTests(unittest.IsolatedAsyncioTestCase):
+    async def test_stop_does_not_remove_the_already_consumed_once_listener(self):
+        bridge = SunSpecBridge(SimpleNamespace(), SimpleNamespace(data={}, options={}))
+        bridge.stop_unsubscribe = Mock(side_effect=AssertionError("listener already removed"))
+        await bridge.stop(None)
+        self.assertTrue(bridge.closed)
+        self.assertIsNone(bridge.stop_unsubscribe)
+
     async def test_close_cancels_background_refresh_and_unsubscribes(self):
         bridge = SunSpecBridge(SimpleNamespace(), SimpleNamespace(data={}, options={}))
         removers = [Mock(), Mock(), Mock()]
