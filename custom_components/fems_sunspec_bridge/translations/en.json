@@ -1,0 +1,49 @@
+{
+  "title": "SunSpec Bridge",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Bridge SunSpec2 to FEMS",
+        "description": "Serve the existing SunSpec2 register data to FEMS. Control writes use the source connection. Point UniFi forwarding at this listener after testing.",
+        "data": {
+          "source_entry_id": "SunSpec2 source",
+          "listen_host": "Listen address",
+          "port": "Modbus TCP port",
+          "unit_id": "FEMS unit ID",
+          "max_age": "Maximum measurement age (seconds)",
+          "allow_writes": "Forward SunSpec model 123 control writes",
+          "allowed_networks": "Allowed client networks (comma separated CIDRs)"
+        }
+      }
+    },
+    "error": {
+      "invalid_network": "Enter a valid listen IP and at least one valid client network.",
+      "listener_in_use": "Another bridge already uses this listen address and port."
+    },
+    "abort": {
+      "no_source": "Set up SunSpec2 first.",
+      "already_configured": "A bridge already uses this listener.",
+      "listener_in_use": "Another bridge already uses this listen address and port."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Bridge settings",
+        "data": {
+          "source_entry_id": "SunSpec2 source",
+          "listen_host": "Listen address",
+          "port": "Modbus TCP port",
+          "unit_id": "FEMS unit ID",
+          "max_age": "Maximum measurement age (seconds)",
+          "allow_writes": "Forward SunSpec model 123 control writes",
+          "allowed_networks": "Allowed client networks (comma separated CIDRs)"
+        }
+      }
+    },
+    "error": {
+      "invalid_network": "Enter a valid listen IP and at least one valid client network.",
+      "listener_in_use": "Another bridge already uses this listen address and port."
+    }
+  }
+}

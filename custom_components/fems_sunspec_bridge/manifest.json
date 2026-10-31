@@ -1,0 +1,17 @@
+{
+  "domain": "fems_sunspec_bridge",
+  "name": "SunSpec Bridge",
+  "version": "0.2.0",
+  "config_flow": true,
+  "dependencies": [
+    "sunspec2"
+  ],
+  "documentation": "https://github.com/felixsteghofer/homeassistant_sunspec-bridge",
+  "codeowners": [
+    "@felixsteghofer"
+  ],
+  "iot_class": "local_push",
+  "integration_type": "service",
+  "requirements": [],
+  "issue_tracker": "https://github.com/felixsteghofer/homeassistant_sunspec-bridge/issues"
+}

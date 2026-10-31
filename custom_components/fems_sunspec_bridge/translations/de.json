@@ -1,0 +1,49 @@
+{
+  "title": "SunSpec Bridge",
+  "config": {
+    "step": {
+      "user": {
+        "title": "SunSpec2 mit FEMS verbinden",
+        "description": "Stellt die vorhandenen SunSpec2-Register für FEMS bereit. Schreibzugriffe verwenden dieselbe Verbindung zum Wechselrichter.",
+        "data": {
+          "source_entry_id": "SunSpec2-Quelle",
+          "listen_host": "Listen-Adresse",
+          "port": "Modbus-TCP-Port",
+          "unit_id": "FEMS-Geräte-ID",
+          "max_age": "Maximales Messwertalter (Sekunden)",
+          "allow_writes": "Schreibzugriffe für SunSpec-Modell 123 weiterleiten",
+          "allowed_networks": "Erlaubte Client-Netze (kommagetrennte CIDRs)"
+        }
+      }
+    },
+    "error": {
+      "invalid_network": "Eine gültige Listen-IP und mindestens ein gültiges Client-Netz angeben.",
+      "listener_in_use": "Eine andere Bridge verwendet diese Adresse und diesen Port bereits."
+    },
+    "abort": {
+      "no_source": "Zuerst SunSpec2 einrichten.",
+      "already_configured": "Für diesen Listener existiert bereits eine Bridge.",
+      "listener_in_use": "Eine andere Bridge verwendet diese Adresse und diesen Port bereits."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Bridge-Einstellungen",
+        "data": {
+          "source_entry_id": "SunSpec2-Quelle",
+          "listen_host": "Listen-Adresse",
+          "port": "Modbus-TCP-Port",
+          "unit_id": "FEMS-Geräte-ID",
+          "max_age": "Maximales Messwertalter (Sekunden)",
+          "allow_writes": "Schreibzugriffe für SunSpec-Modell 123 weiterleiten",
+          "allowed_networks": "Erlaubte Client-Netze (kommagetrennte CIDRs)"
+        }
+      }
+    },
+    "error": {
+      "invalid_network": "Eine gültige Listen-IP und mindestens ein gültiges Client-Netz angeben.",
+      "listener_in_use": "Eine andere Bridge verwendet diese Adresse und diesen Port bereits."
+    }
+  }
+}
